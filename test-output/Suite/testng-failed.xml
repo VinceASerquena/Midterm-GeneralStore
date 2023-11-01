@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Scenario 1 - Open and Create an Account(failed)">
+    <parameter name="Country" value="Philippines"/>
+    <parameter name="Name" value="VinceSerquena"/>
+    <classes>
+      <class name="scripts.TC1_CreateAccount">
+        <methods>
+          <include name="tearDown"/>
+          <include name="startServerwithApp"/>
+          <include name="createAccount" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- scripts.TC1_CreateAccount -->
+    </classes>
+  </test> <!-- Scenario 1 - Open and Create an Account(failed) -->
+</suite> <!-- Failed suite [Suite] -->
