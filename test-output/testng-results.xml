@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="2" total="6" passed="4" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-11-01T22:11:02 PST" name="Suite" finished-at="2023-11-01T22:12:21 PST" duration-ms="78854">
+  <suite started-at="2023-11-02T14:59:53 PST" name="Suite" finished-at="2023-11-02T15:01:04 PST" duration-ms="71538">
     <groups>
     </groups>
-    <test started-at="2023-11-01T22:11:02 PST" name="Scenario 1 - Open and Create an Account" finished-at="2023-11-01T22:12:11 PST" duration-ms="68482">
-      <class name="scripts.TC1_CreateAccount">
-        <test-method is-config="true" signature="startServerwithApp()[pri:0, instance:scripts.TC1_CreateAccount@233795b6]" started-at="2023-11-01T22:11:02 PST" name="startServerwithApp" finished-at="2023-11-01T22:11:08 PST" duration-ms="5838" status="PASS">
+    <test started-at="2023-11-02T14:59:53 PST" name="Scenario 3 - Validate Navigation of Products Page" finished-at="2023-11-02T15:01:04 PST" duration-ms="71538">
+      <class name="scripts.TC2_ProductsAndCart">
+        <test-method is-config="true" signature="startServerwithApp()[pri:0, instance:scripts.TC2_ProductsAndCart@f5958c9]" started-at="2023-11-02T14:59:53 PST" name="startServerwithApp" finished-at="2023-11-02T15:00:06 PST" duration-ms="13403" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startServerwithApp -->
-        <test-method signature="validateHomePage()[pri:0, instance:scripts.TC1_CreateAccount@233795b6]" started-at="2023-11-01T22:11:08 PST" name="validateHomePage" finished-at="2023-11-01T22:11:12 PST" duration-ms="4354" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateHomePage -->
-        <test-method signature="createAccount(java.lang.String,java.lang.String)[pri:0, instance:scripts.TC1_CreateAccount@233795b6]" started-at="2023-11-01T22:11:12 PST" name="createAccount" finished-at="2023-11-01T22:12:10 PST" duration-ms="57870" status="PASS">
+        <test-method signature="validateProductsNavigation(java.lang.String,java.lang.String)[pri:0, instance:scripts.TC2_ProductsAndCart@f5958c9]" started-at="2023-11-02T15:00:06 PST" name="validateProductsNavigation" finished-at="2023-11-02T15:00:50 PST" duration-ms="43560" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Philippines]]>
+                <![CDATA[Australia]]>
               </value>
             </param>
             <param index="1">
@@ -30,32 +26,23 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createAccount -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:scripts.TC1_CreateAccount@233795b6]" started-at="2023-11-01T22:12:10 PST" name="tearDown" finished-at="2023-11-01T22:12:11 PST" duration-ms="387" status="PASS">
+        </test-method> <!-- validateProductsNavigation -->
+        <test-method signature="addToCartByProductName(java.lang.String)[pri:0, instance:scripts.TC2_ProductsAndCart@f5958c9]" started-at="2023-11-02T15:00:50 PST" name="addToCartByProductName" finished-at="2023-11-02T15:01:03 PST" duration-ms="13395" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Converse All Star]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addToCartByProductName -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:scripts.TC2_ProductsAndCart@f5958c9]" started-at="2023-11-02T15:01:03 PST" name="tearDown" finished-at="2023-11-02T15:01:04 PST" duration-ms="1057" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- scripts.TC1_CreateAccount -->
-    </test> <!-- Scenario 1 - Open and Create an Account -->
-    <test started-at="2023-11-01T22:12:11 PST" name="Scenario 2 - Validate Error Message for Account Creation" finished-at="2023-11-01T22:12:21 PST" duration-ms="10316">
-      <class name="scripts.TC1_CreateAccount">
-        <test-method is-config="true" signature="startServerwithApp()[pri:0, instance:scripts.TC1_CreateAccount@6200f9cb]" started-at="2023-11-01T22:12:11 PST" name="startServerwithApp" finished-at="2023-11-01T22:12:16 PST" duration-ms="4808" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- startServerwithApp -->
-        <test-method signature="validateHomePage()[pri:0, instance:scripts.TC1_CreateAccount@6200f9cb]" started-at="2023-11-01T22:12:16 PST" name="validateHomePage" finished-at="2023-11-01T22:12:20 PST" duration-ms="4479" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateHomePage -->
-        <test-method signature="invalidAccount()[pri:0, instance:scripts.TC1_CreateAccount@6200f9cb]" started-at="2023-11-01T22:12:20 PST" name="invalidAccount" finished-at="2023-11-01T22:12:21 PST" duration-ms="665" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- invalidAccount -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:scripts.TC1_CreateAccount@6200f9cb]" started-at="2023-11-01T22:12:21 PST" name="tearDown" finished-at="2023-11-01T22:12:21 PST" duration-ms="359" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- scripts.TC1_CreateAccount -->
-    </test> <!-- Scenario 2 - Validate Error Message for Account Creation -->
+      </class> <!-- scripts.TC2_ProductsAndCart -->
+    </test> <!-- Scenario 3 - Validate Navigation of Products Page -->
   </suite> <!-- Suite -->
 </testng-results>

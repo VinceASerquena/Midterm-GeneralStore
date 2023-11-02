@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -209,15 +210,18 @@ public class BaseMethods {
 		if (element[1] == "accessibilityId") {
 			val=driver.findElement(AppiumBy.accessibilityId(element[2])).getText();
 			Assert.assertEquals(val, expectedValue);
+			System.out.println(element[0] + ": text is equal to expected Value - " + expectedValue);
 		}
 		else if (element[1] == "id") {
 			val=driver.findElement(AppiumBy.id(element[2])).getText();
 			Assert.assertEquals(val, expectedValue);
+			System.out.println(element[0] + ": text is equal to expected Value - " + expectedValue);
 		}
 		
 		else if (element[1] == "xpath") {
 			val=driver.findElement(AppiumBy.xpath(element[2])).getText();
 			Assert.assertEquals(val, expectedValue);
+			System.out.println(element[0] + ": text is equal to expected Value - " + expectedValue);
 		}
 	}
 	
@@ -262,12 +266,28 @@ public class BaseMethods {
 	
 	public boolean scrollDownGesture() {
 		boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap.of(
-			    "left", 100, "top", 300, "width", 1300, "height", 2900,
+			    "left", 5, "top", 350, "width", 45, "height", 2850,
 			    "direction", "down",
-			    "percent", 0.5
+			    "percent", 3.0
 			));
 		return canScrollMore;
 	}
+	public void swipeGesture() {
+		((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+			    "left", 5, "top", 350, "width", 45, "height", 2850,
+			    "direction", "up",
+			    "percent", 0.75
+			));
+	}
+	
+	public void swipeGesture(WebElement ele) {
+		((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+			    "elementId", ((RemoteWebElement) ele).getId(), 
+			    "direction", "up",
+			    "percent", 0.75
+			));
+	}
+	
 	
 	public void scrollToText(String text) {
 		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"))"));	
@@ -344,6 +364,53 @@ public class BaseMethods {
 		for(WebElement element: elements){
 		    System.out.println(element.getText());
 		}
+	}
+	
+	public void moveToElement(String[] ele) {
+		
+		String locatorBy = ele[1];
+		
+		if (locatorBy == "accessibilityId") {
+			WebElement element = driver.findElement(AppiumBy.accessibilityId(ele[2]));
+			try {
+				Actions action = new Actions(driver);
+				action.moveToElement(element);
+				action.perform();	
+			} catch (StaleElementReferenceException e) {
+				element = driver.findElement(AppiumBy.accessibilityId(ele[2]));
+				Actions action = new Actions(driver);
+				action.moveToElement(element);
+				action.perform();	
+			}
+		}
+		else if (locatorBy == "id") {
+			WebElement element = driver.findElement(AppiumBy.id(ele[2]));
+			try {
+				Actions action = new Actions(driver);
+				action.moveToElement(element);
+				action.perform();	
+			} catch (StaleElementReferenceException e) {
+				element = driver.findElement(AppiumBy.id(ele[2]));
+				Actions action = new Actions(driver);
+				action.moveToElement(element);
+				action.perform();	
+			}
+		}
+		else if (locatorBy == "xpath") {
+			WebElement element = driver.findElement(AppiumBy.xpath(ele[2]));
+			try {
+				Actions action = new Actions(driver);
+				action.moveToElement(element);
+				action.perform();	
+			} catch (StaleElementReferenceException e) {
+				element = driver.findElement(AppiumBy.xpath(ele[2]));
+				Actions action = new Actions(driver);
+				action.moveToElement(element);
+				action.perform();	
+			}
+			
+		}
+				
 	}
 
 }

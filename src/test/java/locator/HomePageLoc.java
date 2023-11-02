@@ -1,6 +1,6 @@
 package locator;
 
-public class HomePage {
+public class HomePageLoc {
 
 	public static final String[] Country_Select_Label = {"Country Select Label", "xpath", "//android.widget.TextView[@text = 'Select the country where you want to shop']"};
 	public static final String[] Country_Select_Dropdown = {"Country Select Dropdown", "id", "com.androidsample.generalstore:id/spinnerCountry"};

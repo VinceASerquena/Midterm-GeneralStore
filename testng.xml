@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="Suite">
+<!--
   <test name="Scenario 1 - Open and Create an Account">
 	<parameter name="Name" value="VinceSerquena"/>
 	<parameter name="Country" value="Philippines"/>
@@ -25,6 +26,20 @@
       </class>
     </classes>
   </test> 
+-->
 
+  <test name="Scenario 3 - Validate Navigation of Products Page">
+    <classes>
+      <class name="scripts.TC2_ProductsAndCart">
+		  <parameter name="Name" value="VinceSerquena"/>
+		  <parameter name="Country" value="Australia"/>
+		  <parameter name="ProductName" value="Converse All Star"></parameter>
+		  <methods>
+			  <include name="validateProductsNavigation"/>
+			  <include name="addToCartByProductName"/>
+		  </methods>
+      </class>
+    </classes>
+  </test>
   
 </suite> 
