@@ -20,18 +20,6 @@ public class ProductsPage extends BaseMethods{
 		super(driver);
 	}
 	
-	//insert methods for Products Page
-	public void validateProductName(String[] elm) {
-		
-		List<WebElement> listOfElements;
-		listOfElements = driver.findElements(AppiumBy.id(elm[2]));
-
-		for(WebElement element: listOfElements){
-		    System.out.println(elm[0] + " text value: " + element.getText());
-		    ExtentReportsUtil.info(elm[0] + " text value: " + element.getText());
-		}
-	}
-	
 	public void validateProducts(String[] elm) throws StaleElementReferenceException{
 		List<String> products = new ArrayList<>();
 		List<WebElement> listOfElements;
