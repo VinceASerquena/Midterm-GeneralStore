@@ -21,7 +21,6 @@ public class ProductsPage extends BaseMethods{
 	}
 	
 	public void validateProducts(String[] elm) throws StaleElementReferenceException{
-	
 		List<String> products = new ArrayList<>();
 		List<WebElement> listOfElements;
 		listOfElements = new ArrayList<>();
