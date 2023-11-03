@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Scenario 3 - Validate Navigation of Products Page(failed)">
+  <test thread-count="5" name="Scenario 1 - Open and Create an Account(failed)">
+    <parameter name="Country" value="Philippines"/>
+    <parameter name="Name" value="VinceSerquena"/>
+    <classes>
+      <class name="scripts.TC1_CreateAccount">
+        <methods>
+          <include name="tearDown"/>
+          <include name="validateHomePage"/>
+          <include name="startServerwithApp"/>
+          <include name="createAccount"/>
+        </methods>
+      </class> <!-- scripts.TC1_CreateAccount -->
+    </classes>
+  </test> <!-- Scenario 1 - Open and Create an Account(failed) -->
+  <test thread-count="5" name="Scenario 2 - Validate Error Message for Account Creation(failed)">
+    <classes>
+      <class name="scripts.TC1_CreateAccount">
+        <methods>
+          <include name="tearDown"/>
+          <include name="invalidAccount"/>
+          <include name="validateHomePage"/>
+          <include name="startServerwithApp"/>
+        </methods>
+      </class> <!-- scripts.TC1_CreateAccount -->
+    </classes>
+  </test> <!-- Scenario 2 - Validate Error Message for Account Creation(failed) -->
+  <test thread-count="5" name="Scenario 3 - Validate Products and Cart (failed)">
     <classes>
       <class name="scripts.TC2_ProductsAndCart">
         <parameter name="Country" value="Australia"/>
@@ -10,9 +36,10 @@
         <methods>
           <include name="tearDown"/>
           <include name="startServerwithApp"/>
-          <include name="addToCartByProductName" invocation-numbers="0"/>
+          <include name="validateProductsNavigation"/>
+          <include name="addToCartByProductName"/>
         </methods>
       </class> <!-- scripts.TC2_ProductsAndCart -->
     </classes>
-  </test> <!-- Scenario 3 - Validate Navigation of Products Page(failed) -->
+  </test> <!-- Scenario 3 - Validate Products and Cart (failed) -->
 </suite> <!-- Failed suite [Suite] -->

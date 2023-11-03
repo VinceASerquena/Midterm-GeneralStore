@@ -18,6 +18,7 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import utils.ExtentReportsUtil;
 
 public class BaseMethods {
 	protected AndroidDriver driver;
@@ -31,21 +32,25 @@ public class BaseMethods {
 	public void navigateBack() {
 		driver.navigate().back();
 		System.out.println("Navigated to Previous page");
+		ExtentReportsUtil.pass("Navigated to Previous page");
 	}
 	
 	public void pressBackKey() {
 		driver.pressKey(new KeyEvent(AndroidKey.BACK));
+		ExtentReportsUtil.pass("Pressed Back Key");
 	}
 	
 	public void clickOnText(String value) {
 		WebElement ele = driver.findElement(AppiumBy.xpath("//*[@text = '"+ value +"']"));
 		try {
 			ele.click();
-			System.out.println("Clicked on text");
+			System.out.println("Clicked on text: " + value);
+			ExtentReportsUtil.pass("Clicked on text: " + value);
 		} catch (StaleElementReferenceException e) {
 			ele = driver.findElement(AppiumBy.xpath("//*[text() = '"+ value +"']"));
 			ele.click();
-			System.out.println("Clicked on text");
+			System.out.println("Clicked on text: " + value);
+			ExtentReportsUtil.pass("Clicked on text: " + value);
 		}
 	}
 	
@@ -56,10 +61,12 @@ public class BaseMethods {
 			try {
 				elm.click();
 				System.out.println(element[0] + " was Clicked");
+				ExtentReportsUtil.pass(element[0] + " was Clicked");
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.accessibilityId(element[2]));
 				elm.click();
 				System.out.println(element[0] + " was Clicked");
+				ExtentReportsUtil.pass(element[0] + " was Clicked");
 			}	
 		}
 		else if (locatorBy == "id") {
@@ -67,10 +74,12 @@ public class BaseMethods {
 			try {
 				elm.click();
 				System.out.println(element[0] + " was Clicked");
+				ExtentReportsUtil.pass(element[0] + " was Clicked");
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.id(element[2]));
 				elm.click();
 				System.out.println(element[0] + " was Clicked");
+				ExtentReportsUtil.pass(element[0] + " was Clicked");
 			}	
 		}
 		else if (locatorBy == "xpath") {
@@ -78,10 +87,12 @@ public class BaseMethods {
 			try {
 				elm.click();
 				System.out.println(element[0] + " was Clicked");
+				ExtentReportsUtil.pass(element[0] + " was Clicked");
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.xpath(element[2]));
 				elm.click();
 				System.out.println(element[0] + " was Clicked");
+				ExtentReportsUtil.pass(element[0] + " was Clicked");
 			}	
 		}
 		
@@ -94,23 +105,26 @@ public class BaseMethods {
 			WebElement elm = driver.findElement(AppiumBy.accessibilityId(element[2]));
 			try {
 				elm.sendKeys(value);			
-				System.out.println("Send text value to element: " + element[0]);				
+				System.out.println("Send text value to element: " + element[0]);	
+				ExtentReportsUtil.pass("Send text value to element: " + element[0]);
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.accessibilityId(element[2]));
 				elm.sendKeys(value);			
 				System.out.println("Send text value to element: " + element[0]);
+				ExtentReportsUtil.pass("Send text value to element: " + element[0]);
 			}
-
 		}
 		else if (locatorBy == "xpath") {
 			WebElement elm = driver.findElement(AppiumBy.xpath(element[2]));
 			try {
 				elm.sendKeys(value);			
-				System.out.println("Send text value to element: " + element[0]);				
+				System.out.println("Send text value to element: " + element[0]);
+				ExtentReportsUtil.pass("Send text value to element: " + element[0]);
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.xpath(element[2]));
 				elm.sendKeys(value);			
 				System.out.println("Send text value to element: " + element[0]);
+				ExtentReportsUtil.pass("Send text value to element: " + element[0]);
 			}
 
 		}
@@ -119,10 +133,12 @@ public class BaseMethods {
 			try {
 				elm.sendKeys(value);			
 				System.out.println("Send text value to element: " + element[0]);
+				ExtentReportsUtil.pass("Send text value to element: " + element[0]);
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.id(element[2]));
 				elm.sendKeys(value);			
 				System.out.println("Send text value to element: " + element[0]);
+				ExtentReportsUtil.pass("Send text value to element: " + element[0]);
 			}
 		}
 	}
@@ -134,11 +150,15 @@ public class BaseMethods {
 			WebElement elm = driver.findElement(AppiumBy.accessibilityId(element[2]));
 			try {
 				actualValue = elm.getText();
-				Assert.assertEquals(actualValue,expectedValue);				
+				Assert.assertEquals(actualValue,expectedValue);
+				System.out.println(element[0] + " value is equal to expected value");
+				ExtentReportsUtil.pass(element[0] + " value is equal to expected value");
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.accessibilityId(element[2]));
 				actualValue = elm.getText();
 				Assert.assertEquals(actualValue,expectedValue);
+				System.out.println(element[0] + " value is equal to expected value");
+				ExtentReportsUtil.pass(element[0] + " value is equal to expected value");
 			}
 
 		}
@@ -146,11 +166,15 @@ public class BaseMethods {
 			WebElement elm = driver.findElement(AppiumBy.xpath(element[2]));
 			try {
 				actualValue = elm.getText();
-				Assert.assertEquals(actualValue,expectedValue);				
+				Assert.assertEquals(actualValue,expectedValue);	
+				System.out.println(element[0] + " value is equal to expected value");
+				ExtentReportsUtil.pass(element[0] + " value is equal to expected value");
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.xpath(element[2]));
 				actualValue = elm.getText();
 				Assert.assertEquals(actualValue,expectedValue);
+				System.out.println(element[0] + " value is equal to expected value");
+				ExtentReportsUtil.pass(element[0] + " value is equal to expected value");
 			}
 
 		}
@@ -159,10 +183,14 @@ public class BaseMethods {
 			try {
 				actualValue = elm.getText();
 				Assert.assertEquals(actualValue,expectedValue);
+				System.out.println(element[0] + " value is equal to expected value");
+				ExtentReportsUtil.pass(element[0] + " value is equal to expected value");
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.id(element[2]));
 				actualValue = elm.getText();
 				Assert.assertEquals(actualValue,expectedValue);
+				System.out.println(element[0] + " value is equal to expected value");
+				ExtentReportsUtil.pass(element[0] + " value is equal to expected value");
 			}
 		}
 		
@@ -178,12 +206,14 @@ public class BaseMethods {
 					    "elementId", ((RemoteWebElement) elm).getId()
 					));
 				System.out.println(element[0] + " long pressed");
+				ExtentReportsUtil.pass(element[0] + " long pressed");
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.accessibilityId(element[2]));
 				((JavascriptExecutor) driver).executeScript("mobile: longClickGesture", ImmutableMap.of(
 					    "elementId", ((RemoteWebElement) elm).getId()
 					));
 				System.out.println(element[0] + " long pressed");
+				ExtentReportsUtil.pass(element[0] + " long pressed");
 			}
 		}
 		else if (locatorBy == "xpath") {
@@ -193,12 +223,14 @@ public class BaseMethods {
 					    "elementId", ((RemoteWebElement) elm).getId(), "duration",2000
 					));
 				System.out.println(element[0] + " long pressed");
+				ExtentReportsUtil.pass(element[0] + " long pressed");
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.xpath(element[2]));
 				((JavascriptExecutor) driver).executeScript("mobile: longClickGesture", ImmutableMap.of(
 					    "elementId", ((RemoteWebElement) elm).getId(), "duration",2000
 					));
 				System.out.println(element[0] + " long pressed");
+				ExtentReportsUtil.pass(element[0] + " long pressed");
 			}
 		}
 		
@@ -211,17 +243,20 @@ public class BaseMethods {
 			val=driver.findElement(AppiumBy.accessibilityId(element[2])).getText();
 			Assert.assertEquals(val, expectedValue);
 			System.out.println(element[0] + ": text is equal to expected Value - " + expectedValue);
+			ExtentReportsUtil.pass(element[0] + ": text is equal to expected Value - " + expectedValue);
 		}
 		else if (element[1] == "id") {
 			val=driver.findElement(AppiumBy.id(element[2])).getText();
 			Assert.assertEquals(val, expectedValue);
 			System.out.println(element[0] + ": text is equal to expected Value - " + expectedValue);
+			ExtentReportsUtil.pass(element[0] + ": text is equal to expected Value - " + expectedValue);
 		}
 		
 		else if (element[1] == "xpath") {
 			val=driver.findElement(AppiumBy.xpath(element[2])).getText();
 			Assert.assertEquals(val, expectedValue);
 			System.out.println(element[0] + ": text is equal to expected Value - " + expectedValue);
+			ExtentReportsUtil.pass(element[0] + ": text is equal to expected Value - " + expectedValue);
 		}
 	}
 	
@@ -231,11 +266,13 @@ public class BaseMethods {
 			WebElement elm = driver.findElement(AppiumBy.accessibilityId(element[2]));
 			try {
 				Assert.assertTrue(elm.isDisplayed());
-				System.out.println("Element is displayed: " + element[0]);	
+				System.out.println("Element is displayed: " + element[0]);
+				ExtentReportsUtil.pass("Element is displayed: " + element[0]);
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.accessibilityId(element[2]));
 				Assert.assertTrue(elm.isDisplayed());
-				System.out.println("Element is displayed: " + element[0]);	
+				System.out.println("Element is displayed: " + element[0]);
+				ExtentReportsUtil.pass("Element is displayed: " + element[0]);
 			}
 			
 		}
@@ -243,11 +280,13 @@ public class BaseMethods {
 			WebElement elm = driver.findElement(AppiumBy.id(element[2]));
 			try {
 				Assert.assertTrue(elm.isDisplayed());
-				System.out.println("Element is displayed: " + element[0]);	
+				System.out.println("Element is displayed: " + element[0]);
+				ExtentReportsUtil.pass("Element is displayed: " + element[0]);
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.id(element[2]));
 				Assert.assertTrue(elm.isDisplayed());
 				System.out.println("Element is displayed: " + element[0]);	
+				ExtentReportsUtil.pass("Element is displayed: " + element[0]);
 			}
 		}
 		
@@ -256,10 +295,12 @@ public class BaseMethods {
 			try {
 				Assert.assertTrue(elm.isDisplayed());
 				System.out.println("Element is displayed: " + element[0]);
+				ExtentReportsUtil.pass("Element is displayed: " + element[0]);
 			} catch (StaleElementReferenceException e) {
 				elm = driver.findElement(AppiumBy.xpath(element[2]));
 				Assert.assertTrue(elm.isDisplayed());
 				System.out.println("Element is displayed: " + element[0]);
+				ExtentReportsUtil.pass("Element is displayed: " + element[0]);
 			}
 		}
 	}
@@ -290,13 +331,16 @@ public class BaseMethods {
 	
 	
 	public void scrollToText(String text) {
-		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"))"));	
+		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\""+text+"\"))"));
+		System.out.println("Scrolled to Text: " + text);
+		ExtentReportsUtil.pass("Scrolled to Text: " + text);
 	}
 	
 	public void scrollToElementByUIAutomator(String[] element) {
 		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("+element[3]+")"));
 		
 		System.out.println("Scrolled to: " + element[0]);
+		ExtentReportsUtil.pass("Scrolled to: " + element[0]);
 	}
 	
 	public boolean flingGesture(String[] element) {

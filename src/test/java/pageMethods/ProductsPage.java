@@ -12,6 +12,7 @@ import common.BaseMethods;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import locator.ProductsPageLoc;
+import utils.ExtentReportsUtil;
 
 public class ProductsPage extends BaseMethods{
 	
@@ -27,6 +28,7 @@ public class ProductsPage extends BaseMethods{
 
 		for(WebElement element: listOfElements){
 		    System.out.println(elm[0] + " text value: " + element.getText());
+		    ExtentReportsUtil.info(elm[0] + " text value: " + element.getText());
 		}
 	}
 	
@@ -65,9 +67,11 @@ public class ProductsPage extends BaseMethods{
 		}
 				
 		System.out.println("Sorted Product List: ");
+		ExtentReportsUtil.info("Sorted Product List: ");
 		int ctr = 1;
 		for (String str : s) {
 			System.out.println(ctr + ". " + str);
+			ExtentReportsUtil.info(ctr + ". " + str);
 			ctr++;
 		}	
 				

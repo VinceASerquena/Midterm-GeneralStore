@@ -13,6 +13,6 @@ public class ProductsPageLoc {
 	public static final String[] Product_Cart_Icon = {"Product Cart Icon", "id", "com.androidsample.generalstore:id/appbar_btn_cart"};
 	public static final String[] Product_Cart_Count = {"Product Cart Count", "id", "com.androidsample.generalstore:id/counterText"};
 	
-	public static final String[] Cart_ProductName_Text = {"Cart Product Name Texr", "id", "com.androidsample.generalstore:id/productName"};
+	public static final String[] Cart_ProductName_Text = {"Cart Product Name Text", "id", "com.androidsample.generalstore:id/productName"};
 	
 }
